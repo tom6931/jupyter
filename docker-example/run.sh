@@ -4,7 +4,7 @@
 # Author: Christiam Camacho (camacho@ncbi.nlm.nih.gov)
 # Created: Mon 10 Jun 2019 12:18:33 PM EDT
 
-set -euo pipefail
+set -eo pipefail
 shopt -s nullglob
 
 PLASMIDS_DB=Plasmids_562
@@ -30,11 +30,11 @@ head ${BLAST_RESULTS}
 
 curl -sO https://raw.githubusercontent.com/fomightez/sequencework/master/blast-utilities/blast_to_df.py
 
-virtualenv -ppython3 .venv 
-source .venv/bin/activate && pip install pandas
+virtualenv .venv 
+pip install pandas
 
-source .venv/bin/activate && python3 blast_to_df.py ${BLAST_RESULTS}
+python3 blast_to_df.py ${BLAST_RESULTS}
 
-source .venv/bin/activate && python3 -c 'import pandas as pd; df = pd.read_pickle("BLAST_pickled_df.pkl"); print(df.head()); '
+python3 -c 'import pandas as pd; df = pd.read_pickle("BLAST_pickled_df.pkl"); print(df.head()); '
 
-source .venv/bin/activate && python3 -c 'import pandas as pd; df = pd.read_pickle("BLAST_pickled_df.pkl"); print(df["sseqid"].count());'
+python3 -c 'import pandas as pd; df = pd.read_pickle("BLAST_pickled_df.pkl"); print(df["sseqid"].count());'
