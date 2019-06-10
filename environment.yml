@@ -1,0 +1,10 @@
+name: jupyter-binderized
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - pandas-datareader>=0.5.0
+  - seaborn
+  - statsmodels
+  - blast>=2.7.1
