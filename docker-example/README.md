@@ -14,5 +14,8 @@ Setup script is provided for a Ubuntu based system.
   git clone git@github.com:christiam/jupyter.git
   cd jupyter/docker-example
   ./setup.sh
+  # LOGOUT and log back in
+
+  cd jupyter/docker-example
   ./run.sh
   ```
