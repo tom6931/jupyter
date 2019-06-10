@@ -13,4 +13,6 @@ sudo snap install docker
 sudo apt install -y docker.io virtualenv
 sudo usermod -aG docker $USER
 
-echo "Logout and log back in"
+echo "#####################################"
+echo "### Please logout and log back in ###"
+echo "#####################################"
