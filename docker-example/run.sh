@@ -30,7 +30,8 @@ head ${BLAST_RESULTS}
 
 curl -sO https://raw.githubusercontent.com/fomightez/sequencework/master/blast-utilities/blast_to_df.py
 
-virtualenv .venv 
+virtualenv -ppython3 .venv 
+source .venv/bin/activate
 pip install pandas
 
 python3 blast_to_df.py ${BLAST_RESULTS}
@@ -38,3 +39,7 @@ python3 blast_to_df.py ${BLAST_RESULTS}
 python3 -c 'import pandas as pd; df = pd.read_pickle("BLAST_pickled_df.pkl"); print(df.head()); '
 
 python3 -c 'import pandas as pd; df = pd.read_pickle("BLAST_pickled_df.pkl"); print(df["sseqid"].count());'
+
+python3 -c 'import pandas as pd; df = pd.read_pickle("BLAST_pickled_df.pkl"); print( df[df.duplicated("sseqid", "first") != True]["sseqid"].count() );'
+
+python3 -c 'import pandas as pd; df = pd.read_pickle("BLAST_pickled_df.pkl"); print( df[df.duplicated("sseqid", False)] );'
