@@ -31,11 +31,10 @@ head ${BLAST_RESULTS}
 curl -sO https://raw.githubusercontent.com/fomightez/sequencework/master/blast-utilities/blast_to_df.py
 
 virtualenv -ppython3 .venv 
-source .venv/bin/activate
-pip install pandas
+source .venv/bin/activate && pip install pandas
 
-python3 blast_to_df.py ${BLAST_RESULTS}
+source .venv/bin/activate && python3 blast_to_df.py ${BLAST_RESULTS}
 
-python3 -e 'import pandas as pd; df = pd.read_pickle("BLAST_pickled_df.pkl"); df.head(); '
+source .venv/bin/activate && python3 -c 'import pandas as pd; df = pd.read_pickle("BLAST_pickled_df.pkl"); print(df.head()); '
 
-python3 -e 'import pandas as pd; df = pd.read_pickle("BLAST_pickled_df.pkl"); df["sseqid"].count(); '
+source .venv/bin/activate && python3 -c 'import pandas as pd; df = pd.read_pickle("BLAST_pickled_df.pkl"); print(df["sseqid"].count());'
